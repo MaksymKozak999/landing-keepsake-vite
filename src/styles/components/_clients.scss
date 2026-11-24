@@ -1,0 +1,128 @@
+@use '../utils' as *;
+
+.logos {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-top: rem(14);
+}
+
+.logo-item {
+  @include flex-center;
+
+  flex: 0 0 50%;
+  min-height: rem(72);
+  font-size: rem(22);
+  color: var(--color-logo-muted);
+
+  @include mq(md) {
+    flex: 0 0 33.333%;
+  }
+
+  @include mq(lg) {
+    flex: 0 0 16.666%;
+  }
+
+  &--nordly {
+    font-family: var(--font-heading);
+    font-weight: 700;
+  }
+
+  &--halcyon {
+    font-family: var(--font-logo);
+    font-weight: 700;
+  }
+
+  &--arco {
+    font-family: var(--font-heading);
+    font-weight: 300;
+  }
+
+  &--pinewood {
+    font-family: var(--font-body);
+    font-weight: 700;
+  }
+
+  &--vela {
+    font-family: var(--font-body);
+    font-weight: 300;
+    letter-spacing: 3px;
+  }
+
+  &--ostra {
+    font-family: var(--font-heading);
+    font-weight: 400;
+  }
+}
+
+.testimonial {
+  padding: rem(28) rem(24);
+  background-color: var(--color-bg-light);
+  margin-top: rem(14);
+  display: flex;
+  flex-direction: column;
+  gap: rem(14);
+
+  &__mark {
+    font-family: var(--font-heading);
+    font-size: rem(56);
+    line-height: rem(36);
+    color: var(--color-accent);
+  }
+
+  blockquote p {
+    font-size: rem(16);
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--color-text-dark);
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: rem(14);
+  }
+
+  &__who {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__name {
+    font-weight: 700;
+    color: var(--color-text-dark);
+  }
+
+  &__role {
+    font-size: rem(13);
+    color: var(--color-muted);
+  }
+}
+
+.avatar {
+  @include flex-center;
+
+  width: rem(48);
+  height: rem(48);
+  border-radius: 50%;
+  background-color: var(--color-text-dark);
+  color: var(--color-white);
+  font-family: var(--font-heading);
+}
+
+.dots {
+  display: flex;
+  gap: rem(8);
+  margin-left: auto;
+}
+
+.dot {
+  width: rem(8);
+  height: rem(8);
+  border-radius: 50%;
+  background-color: var(--color-border);
+
+  &.is-active {
+    background-color: var(--color-accent);
+  }
+}

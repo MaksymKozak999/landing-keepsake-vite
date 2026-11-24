@@ -1,0 +1,52 @@
+@use '../utils' as *;
+
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem(32) rem(16);
+  list-style: none;
+  margin-top: rem(14);
+  text-align: center;
+
+  @include mq(md) {
+    gap: rem(40) rem(24);
+  }
+}
+
+.service {
+  flex: 0 0 calc((100% - #{rem(16)}) / 2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: rem(14);
+
+  @include mq(md) {
+    flex: 0 0 calc((100% - #{rem(24)}) / 2);
+  }
+
+  @include mq(lg) {
+    flex: 0 0 calc((100% - #{rem(72)}) / 4);
+  }
+
+  &__icon {
+    @include flex-center;
+
+    width: rem(72);
+    height: rem(72);
+    border-radius: 50%;
+    background-color: var(--color-bg-light);
+
+    @include mq(md) {
+      width: rem(96);
+      height: rem(96);
+    }
+  }
+
+  &__title {
+    font-family: var(--font-heading);
+    font-size: rem(17);
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--color-text-dark);
+  }
+}

@@ -1,0 +1,188 @@
+@use '../utils' as *;
+
+.works {
+  &__head {
+    display: flex;
+    flex-direction: column;
+    gap: rem(20);
+    margin-bottom: rem(20);
+
+    @include mq(md) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}
+
+.chips {
+  display: flex;
+  gap: rem(8);
+  overflow-x: auto;
+  padding-bottom: rem(4);
+}
+
+.chip {
+  padding: rem(8) rem(16);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-heading);
+  font-size: rem(12);
+  text-transform: uppercase;
+  color: var(--color-text-dark);
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+}
+
+.works__filter[value='all']:checked ~ .works__head label[for='f-all'],
+.works__filter[value='branding']:checked ~ .works__head label[for='f-branding'],
+.works__filter[value='identity']:checked ~ .works__head label[for='f-identity'],
+.works__filter[value='print']:checked ~ .works__head label[for='f-print'],
+.works__filter[value='web']:checked ~ .works__head label[for='f-web'],
+.works__filter[value='motion']:checked ~ .works__head label[for='f-motion'] {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem(12);
+
+  @include mq(lg) {
+    gap: rem(14);
+  }
+}
+
+.card {
+  width: 100%;
+  aspect-ratio: 1 / 0.72;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-bg-light);
+
+  @include mq(md) {
+    width: calc((100% - #{rem(12)}) / 2);
+    aspect-ratio: 1 / 0.79;
+  }
+
+  @include mq(lg) {
+    width: calc((100% - #{rem(28)}) / 3);
+  }
+
+  &.x-m {
+    display: none;
+
+    @include mq(md) {
+      display: block;
+    }
+  }
+
+  &.x-t {
+    @include mq(md) {
+      display: none;
+    }
+
+    @include mq(lg) {
+      display: block;
+    }
+  }
+
+  &__link,
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__overlay {
+    @include flex-center(rem(10));
+
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-overlay);
+    opacity: 0;
+    transition: opacity 0.25s;
+    color: var(--color-white);
+    text-decoration: none;
+  }
+
+  &__link:hover &__overlay,
+  &:focus-within &__overlay {
+    opacity: 1;
+  }
+
+  &__plus {
+    @include flex-center;
+
+    width: rem(44);
+    height: rem(44);
+    border-radius: 50%;
+    background-color: var(--color-teal);
+    color: var(--color-white);
+  }
+
+  &__title {
+    font-family: var(--font-heading);
+    font-size: rem(17);
+    font-weight: 400;
+  }
+
+  &__line {
+    width: rem(30);
+    height: 2px;
+    background-color: var(--color-accent);
+  }
+
+  &__cat {
+    font-family: var(--font-heading);
+    font-size: rem(12);
+    text-transform: uppercase;
+    color: var(--color-teal);
+  }
+}
+
+.works__more:checked ~ .grid .card.x-m {
+  display: block;
+}
+
+.works__filter[value='branding']:checked ~ .grid .card:not([data-category~='branding']),
+.works__filter[value='identity']:checked ~ .grid .card:not([data-category~='identity']),
+.works__filter[value='print']:checked ~ .grid .card:not([data-category~='print']),
+.works__filter[value='web']:checked ~ .grid .card:not([data-category~='web']),
+.works__filter[value='motion']:checked ~ .grid .card:not([data-category~='motion']) {
+  display: none;
+}
+
+.works__filter[value='branding']:checked ~ .grid .card[data-category~='branding'],
+.works__filter[value='identity']:checked ~ .grid .card[data-category~='identity'],
+.works__filter[value='print']:checked ~ .grid .card[data-category~='print'],
+.works__filter[value='web']:checked ~ .grid .card[data-category~='web'],
+.works__filter[value='motion']:checked ~ .grid .card[data-category~='motion'] {
+  display: block;
+}
+
+.load-more {
+  display: flex;
+  justify-content: center;
+  margin-top: rem(24);
+
+  .btn {
+    width: 100%;
+  }
+}
+
+.works__filter:not([value='all']):checked ~ .load-more,
+.works__more:checked ~ .load-more {
+  display: none;
+}
