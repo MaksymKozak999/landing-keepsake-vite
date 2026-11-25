@@ -1,0 +1,18 @@
+mixin icon(name, size)
+  -
+    let boxSize = 18;
+    switch (size) {
+        case 'sm':
+            boxSize = 16;
+            break;
+        case 'md':
+            boxSize = 20;
+            break;
+        case 'lg':
+            boxSize = 40;
+            break;
+        default:
+            boxSize = size || 18;
+    }
+  svg(width=boxSize, height=boxSize, aria-hidden='true')&attributes(attributes)
+    use(href=`#i-${name}`)

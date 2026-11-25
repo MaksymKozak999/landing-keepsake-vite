@@ -1,0 +1,10 @@
+mixin work-card(work, isFirst = false)
+  article.card(class=work.extraClass, data-category=work.slug)
+    a.card__link(href='#')
+      +picture(work.img, work.alt, 714, 564, !isFirst)
+      .card__overlay
+        span.card__plus(aria-hidden='true')
+          +icon('plus', 'sm')
+        h3.card__title= work.title
+        span.card__line(aria-hidden='true')
+        span.card__cat= work.cat

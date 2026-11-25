@@ -1,0 +1,9 @@
+mixin btn(text, href, variant = 'primary')
+  if href
+    a.btn(class=`btn--${variant}`, href=href)&attributes(attributes)
+      block
+      span= text
+  else
+    button.btn(class=`btn--${variant}`, type='button')&attributes(attributes)
+      block
+      span= text
