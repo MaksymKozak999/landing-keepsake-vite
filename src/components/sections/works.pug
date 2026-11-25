@@ -1,0 +1,24 @@
+section#works.section.works
+  .container
+    each cat in filterCategories
+      input.visually-hidden.works__filter(
+        id=cat.id,
+        type='radio',
+        name='filter',
+        value=cat.value,
+        checked=cat.checked
+      )
+    input#more.visually-hidden.works__more(type='checkbox')
+
+    .works__head
+      h2.section-title Our awesome works
+      .chips
+        each cat in filterCategories
+          label.chip(for=cat.id)= cat.label
+
+    .grid
+      each work, index in works
+        +work-card(work, index == 0)
+
+    .load-more
+      label.btn.btn--secondary(for='more') Load more works

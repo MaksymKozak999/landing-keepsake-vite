@@ -50,3 +50,27 @@
     color: var(--color-text-dark);
   }
 }
+
+.ic-light {
+  fill: var(--color-bg-light);
+}
+
+.ic-line {
+  stroke: var(--color-text-dark);
+}
+
+.ic-none {
+  fill: none;
+}
+
+.ic-dark {
+  fill: var(--color-text-dark);
+}
+
+.ic-white {
+  fill: var(--color-white);
+}
+
+.ic-accent {
+  fill: var(--color-accent);
+}

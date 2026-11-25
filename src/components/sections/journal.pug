@@ -1,0 +1,18 @@
+section#journal.section.journal
+  .container
+    .section__head
+      h2.section-title From the journal
+      p Notes on process, case studies and things that inspire us.
+    .posts
+      each post in posts
+        article.post
+          .post__thumb
+            +picture(post.img, post.alt, 300, 300, true)
+          .post__body
+            p.post__meta
+              time(datetime=post.date)= post.dateLabel
+              |
+              | / #{ post.cat }
+            h3.post__title= post.title
+            p= post.text
+            a.post__more(href='#') Read more

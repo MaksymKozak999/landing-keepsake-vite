@@ -1,0 +1,19 @@
+include ../data/data
+include ../mixins/icon
+include ../mixins/btn
+include ../mixins/picture
+include ../mixins/work-card
+
+block variables
+
+doctype html
+html(lang='en')
+  include ../includes/head
+  body#top
+    include ../includes/sprite
+    include ../components/header
+    main#main
+      block content
+    include ../components/footer
+    a.to-top(href='#top', aria-label='Back to top')
+      +icon('up', 'md')
